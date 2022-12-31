@@ -45,3 +45,14 @@ print(states_of_america)
 # # delimiter string
 
 
+# IndexErrors & Working with Nested Lists
+
+# IndexOutOfRangeException - Accessing an index where a list element doesn't exist
+
+# Nested Lists
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears"]
+vegetables = ["Spinach", "Kale", "Tomatoes", "Celery", "Potatoes"]
+
+dirty_dozen = [fruits, vegetables]
+
+print(dirty_dozen)

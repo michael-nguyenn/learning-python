@@ -18,7 +18,7 @@ else:
 names_string = "Michael, Irene, Henry, Claire, Desmond, Dina, Victor"
 
 # .split() our string into an array
-names = names_string.split(", ")
+names = names_string.split(", ")  # This removes the comma and the space from our input
 
 # Calculating the index of our list
 index = random.randint(0, len(names) - 1)
