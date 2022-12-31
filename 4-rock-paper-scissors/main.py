@@ -41,4 +41,7 @@ states_of_america.extend(["Irene", "Henry"])
 
 print(states_of_america)
 
+# .split() is a string method that returns a list of the words in the string, separated by the
+# # delimiter string
+
 
