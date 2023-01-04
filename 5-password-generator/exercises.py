@@ -19,3 +19,24 @@ for score in student_scores:
         high_score = score
 
 print(f"The highest score in the class is: {high_score}")
+
+# Calculate the sum of all even numbers from 1-100
+
+total_even = 0
+
+for number in range(2, 101, 2):
+    total_even += number
+
+print(total_even)
+
+# FizzBuzz
+
+for number in range(1, 101):
+    if number % 15 == 0:
+        print("FizzBuzz")
+    elif number % 3 == 0:
+        print("Fizz")
+    elif number % 5 == 0:
+        print("Buzz")
+    else:
+        print(number)
