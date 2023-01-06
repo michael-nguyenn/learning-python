@@ -1,3 +1,5 @@
+# PICKING A RANDOM WORD AND CHECKING ANSWERS
+
 import random
 
 # Step 1
