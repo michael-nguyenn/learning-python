@@ -22,3 +22,5 @@ while countdown > 0:
 
     if countdown == 0:
         print("BOOM")
+
+# 9,8,7,6,5,4,3,2,1,0,BOOM
