@@ -48,7 +48,7 @@ def decrypt(encrypted_text, shift_amount):
 
 
 # TODO-3: Check if the user wanted to encrypt or decrypt the message by checking the
-#  'direction' variable. Then call the correct function based on that 'drection' variable.
+#  'direction' variable. Then call the correct function based on that 'direction' variable.
 #  You should be able to test the code to encrypt *AND* decrypt a message.
 
 if direction == 'encode':
