@@ -29,7 +29,7 @@ def prime_checker(number):
 prime_checker(11)
 
 
-# Solution # 2
+# Solution
 def prime_checker_2(number):
     is_prime = True
 
