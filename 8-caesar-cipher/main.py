@@ -25,3 +25,5 @@ greet_with("Michael", "Canada")
 # Calling the function with keyword arguments instead of positional
 
 greet_with(location="Banana Republic", name="Irene")
+
+# list.index()
