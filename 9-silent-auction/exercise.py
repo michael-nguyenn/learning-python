@@ -1,4 +1,4 @@
-# GRADING PROGRAM
+# EXERCISE 1 - GRADING PROGRAM
 # Converting student's scores to grades
 
 student_scores = {
@@ -28,3 +28,34 @@ def grading_program(scores):
 
 
 student_grades = grading_program(student_scores)
+
+# EXERCISE 2 - TRAVEL LIST (DICTIONARY IN A LIST)
+# Program that will allow new countries to be added to the travel_log
+
+travel_log = [
+    {
+        "country": "France",
+        "visits": 12,
+        "cities": ["Paris", "Lille", "Dijon"]
+    },
+    {
+        "country": "Germany",
+        "visits": 5,
+        "cities": ["Berlin", "Hamburg", "Stuttgart"]
+    },
+]
+
+
+def add_new_country(country, visits, cities):
+    country = {
+        "country": country,
+        "visits": visits,
+        "cities": cities
+    }
+
+    travel_log.append(country)
+
+
+add_new_country("Russia", 2, ["Moscow", "Saint Petersburg"])
+
+print(travel_log)
