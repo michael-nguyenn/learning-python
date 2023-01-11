@@ -57,8 +57,6 @@ travel_log_two = {
     },
 }
 
-# Nesting a dictionary in a List
-
 travel_log_three = [
     {
         "country": "France",

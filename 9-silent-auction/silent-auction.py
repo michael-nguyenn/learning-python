@@ -31,7 +31,7 @@ while should_continue:
 
     # If the bid is finished
     if should_continue == "n":
-        # Clear the console, initialize a variable for winner and their amount bidded
+        # Clear the console, initialize a variable for winner and the amount they bid
         clear()
         winner = ""
         winner_bid = 0

@@ -27,7 +27,7 @@ def grading_program(scores):
     return student_grades
 
 
-student_grades = grading_program(student_scores)
+grades = grading_program(student_scores)
 
 # EXERCISE 2 - TRAVEL LIST (DICTIONARY IN A LIST)
 # Program that will allow new countries to be added to the travel_log
