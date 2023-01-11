@@ -29,18 +29,43 @@ operations = {
     "/": divide
 }
 
-# Gathering user input
-num1 = int(input("What's the first number?: "))
-num2 = int(input("What's the second number?: "))
 
-# Displaying all available operations
-for operation in operations:
-    print(operation)
+def calculator():
+    # Gathering user input
+    num1 = int(input("What's the first number?: "))
 
-# Gathering user input
-operation_symbol = input("Please pick an operation from the line above: ")
+    # Displaying all available operations
+    for operation in operations:
+        print(operation)
 
-# Retrieving the function via user input, and immediately invoking it with (num1, num2)
-answer = operations[operation_symbol](num1, num2)
+    # Setting Continue Condition
+    should_continue = True
 
-print(f"{num1} {operation_symbol} {num2} = {answer}")
+    while should_continue:
+        # Gathering user input
+        operation_symbol = input("Please pick an operation from the line above: ")
+        num2 = int(input("What's the next number?: "))
+
+        # Retrieving the function via user input, and immediately invoking it with (num1, num2)
+        answer = operations[operation_symbol](num1, num2)
+
+        # Showing the calculation in the console
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
+
+        # Continue condition
+        next_calculation = input(f"Type 'y' to continue calculating with {answer},"
+                                 f" or type 'n' to start a new calculation: ")
+
+        # Exit the Loop if user selects n
+        if next_calculation == 'n':
+            should_continue = False
+
+            # Using recursion to restart the calculator
+            calculator()
+        else:
+            # We restart our while loop
+            # Turning num1 to answer so that we can chain our operations
+            num1 = answer
+
+
+calculator()
