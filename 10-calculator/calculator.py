@@ -32,7 +32,7 @@ operations = {
 
 def calculator():
     # Gathering user input
-    num1 = int(input("What's the first number?: "))
+    num1 = float(input("What's the first number?: "))
 
     # Displaying all available operations
     for operation in operations:
@@ -44,7 +44,7 @@ def calculator():
     while should_continue:
         # Gathering user input
         operation_symbol = input("Please pick an operation from the line above: ")
-        num2 = int(input("What's the next number?: "))
+        num2 = float(input("What's the next number?: "))
 
         # Retrieving the function via user input, and immediately invoking it with (num1, num2)
         answer = operations[operation_symbol](num1, num2)
