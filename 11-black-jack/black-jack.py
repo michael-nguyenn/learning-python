@@ -28,26 +28,27 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 # Ace Checker
 def ace_checker(hand):
     for i in range(len(hand)):
-        print(i)
         if hand[i] == 11 and sum(hand) > 21:
             hand[i] = 1
 
 
-# Drawing a Card
-def draw_card():
-    return random.choice(cards)
+# Deal Card Function
+def deal_cards(hand, amount):
+    """Input the hand, and how many cards you want to draw"""
+    for _ in range(amount):
+        hand.append(random.choice(cards))
 
 
 # Calculating Score
 def calculate_score(hand):
+    # Checking for BlackJack - One Ace and One Face Card
+    if len(hand) == 2 and sum(hand) == 21:
+        return 0
+
+    # Calling Ace Checker
+    ace_checker(hand)
+
     return sum(hand)
-
-
-# Calculating Black Jack
-def black_jack(score, user):
-    if score == 21:
-        print(f"Black Jack! {user} wins.")
-        sys.exit()
 
 
 # Displaying Logo
@@ -60,28 +61,19 @@ while continue_game:
     user_hand = []
     computer_hand = []
 
-    # Randomly Assigning 2 cards each
-    for _ in range(2):
-        user_hand.append(draw_card())
-        computer_hand.append(draw_card())
+    # Drawing Two Cards Each to Start the game
+    deal_cards(user_hand, 2)
+    deal_cards(computer_hand, 2)
 
-    # print(f"User Hand: {user_hand}\nComputer Hand: {computer_hand}")
-
-    user_score = calculate_score(user_hand)
     computer_score = calculate_score(computer_hand)
-
-    # Order matters, because if both players have blackjack, computer will win
-    black_jack(computer_score, "Computer")
-
-    black_jack(user_score, "User")
-
-    if user_score == 21:
-        print(f"BlackJack {user_hand}! You win~")
-        time.sleep(1)
-        # print("Would you like to play again?")
+    user_score = calculate_score(user_hand)
 
     # Showing Computer's First Card
     print(f"Computer's Hand: [{computer_hand[0]}, _ ]")
+    print(computer_hand, computer_score)
+
+    if computer_score == 0 or user_score > 21:
+        print("You lose!")
 
     # Setting up Continue Condition for User
     user_continue = True
@@ -94,39 +86,39 @@ while continue_game:
         if user_decision == 'n':
             user_continue = False
         else:
-            user_hand.append(draw_card())
+            deal_cards(user_hand, 1)
             user_score = calculate_score(user_hand)
 
-            black_jack(user_score, "User")
+            calculate_score(user_hand)
 
             if user_score > 21:
                 clear()
-                print(f"{user_hand}. You lose!")
+                print(f"{user_hand} = {user_score}. You lose!")
                 sys.exit()
 
     while computer_score <= 16:
-        computer_hand.append(draw_card())
+        deal_cards(computer_hand, 1)
         computer_score = (calculate_score(computer_hand))
 
-        black_jack(computer_score, "Computer")
+    calculate_score(computer_hand)
 
-        if computer_score > 21:
-            clear()
-            print(f"{computer_hand}. You win!")
-            sys.exit()
+    if computer_score > 21:
+        clear()
+        print(f"{computer_hand} = {computer_score}. You win!")
+        sys.exit()
 
-    clear()
-    print(f"Your Hand: {user_hand} and Score: {user_score}\nComp's Hand: {computer_hand} and Score: {computer_score}")
-    if user_score > computer_score:
-        print("Congratulations! You win~")
-    elif computer_score == user_score:
-        print("It's a tie!")
-    else:
-        print("Sorry you lost.")
+clear()
+print(f"Your Hand: {user_hand} and Score: {user_score}\nComp's Hand: {computer_hand} and Score: {computer_score}")
+if user_score > computer_score:
+    print("Congratulations! You win~")
+elif computer_score == user_score:
+    print("It's a tie!")
+else:
+    print("Sorry you lost.")
 
-    play_again = input("Press 'y' to play again or 'no' to quit the program ")
+play_again = input("Press 'y' to play again or 'no' to quit the program ")
 
-    if play_again == 'n':
-        continue_game = False
+if play_again == 'n':
+    continue_game = False
 
-    clear()
+clear()
