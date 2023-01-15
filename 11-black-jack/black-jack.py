@@ -51,6 +51,16 @@ def calculate_score(hand):
     return sum(hand)
 
 
+# Comparing Scores Function
+def compare(usr_score, comp_score):
+    if usr_score > comp_score:
+        print("You win")
+    elif usr_score == comp_score:
+        print("It's a tie")
+    else:
+        print("You lose")
+
+
 # Displaying Logo
 print(logo)
 
@@ -70,17 +80,22 @@ while continue_game:
 
     # Showing Computer's First Card
     print(f"Computer's Hand: [{computer_hand[0]}, _ ]")
-    print(computer_hand, computer_score)
-
-    if computer_score == 0 or user_score > 21:
-        print("You lose!")
 
     # Setting up Continue Condition for User
     user_continue = True
 
-    while user_continue and user_score < 21:
+    while user_continue:
 
         print(f"Your Hand: {user_hand}")
+
+        if computer_score == 0 or user_score > 21:
+            print("Womp Womp... You lose!")
+            user_continue = False
+
+        if user_score == 0:
+            print("Woo! You win!")
+            user_continue = False
+
         user_decision = input("Press 'y' to draw another card, or 'n' to end your turn: ".lower())
 
         if user_decision == 'n':
@@ -91,30 +106,13 @@ while continue_game:
 
             calculate_score(user_hand)
 
-            if user_score > 21:
-                clear()
-                print(f"{user_hand} = {user_score}. You lose!")
-                sys.exit()
-
-    while computer_score <= 16:
+    while computer_score < 17:
         deal_cards(computer_hand, 1)
-        computer_score = (calculate_score(computer_hand))
+        computer_score = calculate_score(computer_hand)
 
-    calculate_score(computer_hand)
+    clear()
 
-    if computer_score > 21:
-        clear()
-        print(f"{computer_hand} = {computer_score}. You win!")
-        sys.exit()
-
-clear()
-print(f"Your Hand: {user_hand} and Score: {user_score}\nComp's Hand: {computer_hand} and Score: {computer_score}")
-if user_score > computer_score:
-    print("Congratulations! You win~")
-elif computer_score == user_score:
-    print("It's a tie!")
-else:
-    print("Sorry you lost.")
+    compare(user_score, computer_score)
 
 play_again = input("Press 'y' to play again or 'no' to quit the program ")
 
