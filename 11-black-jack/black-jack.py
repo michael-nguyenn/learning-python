@@ -53,12 +53,17 @@ def calculate_score(hand):
 
 # Comparing Scores Function
 def compare(usr_score, comp_score):
-    if usr_score > comp_score:
+    if usr_score > comp_score or comp_score > 21:
         print("You win")
     elif usr_score == comp_score:
         print("It's a tie")
     else:
         print("You lose")
+
+
+# Simulating Time
+def wait(seconds):
+    time.sleep(seconds)
 
 
 # Displaying Logo
@@ -83,18 +88,25 @@ while continue_game:
 
     # Setting up Continue Condition for User
     user_continue = True
+    game_over = False
 
     while user_continue:
 
-        print(f"Your Hand: {user_hand}")
+        print(f"Your Hand: {user_hand}, Your Score: {user_score}")
 
         if computer_score == 0 or user_score > 21:
+            print("-----------------------")
+            wait(1)
+            print(f"Computer's Hand: {computer_hand}")
             print("Womp Womp... You lose!")
-            user_continue = False
+            game_over = True
+            break
 
         if user_score == 0:
-            print("Woo! You win!")
-            user_continue = False
+            print("-----------------------")
+            print("Black Jack!!! You win!")
+            game_over = True
+            break
 
         user_decision = input("Press 'y' to draw another card, or 'n' to end your turn: ".lower())
 
@@ -106,17 +118,24 @@ while continue_game:
 
             calculate_score(user_hand)
 
-    while computer_score < 17:
-        deal_cards(computer_hand, 1)
-        computer_score = calculate_score(computer_hand)
+    if not game_over:
+        print("Computer's turn.......")
 
-    clear()
+        while computer_score < 17:
+            wait(1)
+            deal_cards(computer_hand, 1)
+            print(f"Computer draws a {computer_hand[-1]}")
+            computer_score = calculate_score(computer_hand)
 
-    compare(user_score, computer_score)
+        print("Final Score.....")
+        wait(1)
+        print(f"Your Hand: {user_hand}, Your Score: {user_score}")
+        print(f"Computer Hand: {computer_hand}, Computer Score: {computer_score}")
+        compare(user_score, computer_score)
 
-play_again = input("Press 'y' to play again or 'no' to quit the program ")
+    play_again = input("Press 'y' to play again or 'n' to quit the program ")
 
-if play_again == 'n':
-    continue_game = False
+    clear(1)
 
-clear()
+    if play_again == 'n':
+        continue_game = False
