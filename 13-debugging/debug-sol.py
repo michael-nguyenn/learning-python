@@ -50,8 +50,38 @@ dice_num = randint(0, 5)
 
 # The reason is that at the moment, we are not accounting for 1994 at all
 #   To fix this, we must either classify 1994 as Millennial or Gen Z, by using the GTE or LTE operator
-year = int(input("What's your year of birth? "))
+
+# year = int(input("What's your year of birth? "))
+year = 1994
 if 1980 < year <= 1994:
     print("You are a Millennial.")
 elif year > 1994:
     print("You are a Gen Z.")
+
+# 4. Fix the Errors
+# In the below there are 3 problems
+#   1. We need to convert age to int
+#   2. We have to indent our print statement to nest inside the if block
+#   3. Our print statement needs to be converted into an f string
+
+# age = int(input("How old are you? "))
+age = 15
+
+if age > 18:
+    print(f"You can drive at age {age}.")
+
+# 5. Print is Your Friend
+# Using print, we can see that initially we are using the equality equal signs (==)
+#   instead of assignment equal sign (=). That creates a bug where word_per_page will always equal to 0
+#   That means total_words will always be pages * 0 = 0
+
+pages = 0
+word_per_page = 0
+print(f"FIRST PRINT: {pages} {word_per_page}")
+
+pages = int(input("Number of pages: "))
+word_per_page = int(input("Number of words per page: "))
+print(f"SECOND PRINT: {pages} {word_per_page}")
+
+total_words = pages * word_per_page
+print(total_words)
