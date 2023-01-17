@@ -38,7 +38,7 @@ def my_function_fixed():
 
 dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
 dice_num = randint(0, 5)
-# print(dice_imgs[dice_num])
+print(dice_imgs[dice_num])
 
 # print(dice_imgs[6])  # This code will always yield an error
 
@@ -85,3 +85,28 @@ print(f"SECOND PRINT: {pages} {word_per_page}")
 
 total_words = pages * word_per_page
 print(total_words)
+
+
+# 6. Use a Debugger
+# Using https://pythontutor.com/visualize.html#mode=edit as a debugger, we can see that:
+#   We are nesting our b.list.append(new_item) falsy. Currently, it duplicates each item, and only
+#   appends the last item.
+
+def mutate(a_list):
+    b_list = []
+    for item in a_list:
+        new_item = item * 2
+        b_list.append(new_item)
+    print(b_list)
+
+
+mutate([1, 2, 3, 5, 8, 13])
+
+# Final Tips #####
+
+# 7. Take a break sometimes!! Switch your brain to diffuse mode
+# 8. Don't be afraid to ask a friend for help
+#       They won't make the same assumptions you did, creating a fresh set of eyes
+# 9. Run the Code often. Make sure the code works slowly.
+#       Leaving it all the way to the end will pile up a mountain of bugs
+# 10. ChatGPT
