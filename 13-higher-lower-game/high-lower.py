@@ -30,56 +30,84 @@ def clear(seconds=0):
     os.system('clear')
 
 
-# Randomly selecting two accounts from the list, and assigning it to option "a", and option "b"
-option_a = select()
-option_b = select()
+def account_format(account):
+    """Formats account into - name, description, and country"""
+    name = account['name']
+    description = account['description']
+    country = account["country"]
 
-# Setting up global variables
-game_continue = True
-guessed_correctly = False
-score = 0
-temp = {}
+    return f"{name}, a {description}, from {country}"
 
-while game_continue:
-    print(art.logo)
 
-    # If user picked correct option
-    while guessed_correctly:
-        print(f"You're right! Current score: {score}")
+def correct_guess(guess, a_followers, b_followers):
+    """Returns a boolean value """
+    if a_followers > b_followers:
+        return guess == "A"
+    else:
+        return guess == "B"
 
-        # Assign the correct guess to option A, and generate a new option B
-        option_a = temp
-        option_b = select()
 
-        if option_b['name'] == option_a['name']:
+def duplicate_checker(account1, account2):
+    """Checks if the selections are the same, if so select another account from the dictionary"""
+    if account2['name'] == account1['name']:
+        account2 = select()
+        return account2
+    else:
+        return account2
+
+
+def game():
+    # Randomly selecting two accounts from the list, and assigning it to option "a", and option "b"
+    option_a = select()
+    option_b = select()
+
+    duplicate_checker(option_a, option_b)
+
+    # Setting up global variables
+    game_continue = True
+    guessed_correctly = False
+    score = 0
+    temp = {}
+
+    while game_continue:
+        print(art.logo)
+
+        # If user picked correct option
+        while guessed_correctly:
+            print(f"You're right! Current score: {score}")
+
+            # Assign the correct guess to option A, and generate a new option B
+            option_a = temp
             option_b = select()
 
-        guessed_correctly = False
+            duplicate_checker(option_a, option_b)
 
-    print(option_a)
-    print(option_b)
+            guessed_correctly = False
 
-    print(f"Compare A: {option_a['name']}, a {option_a['description']}, from {option_a['country']}.")
-    print(art.vs)
-    print(f"Against B: {option_b['name']}, a {option_b['description']}, from {option_b['country']}.")
-    usr_choice = input("Who has more followers? Type 'A' or 'B ").upper()
+        # TESTING CODE
+        print(option_a)
+        print(option_b)
 
-    if (usr_choice == "A" and int(option_a['follower_count']) > int(
-            option_b['follower_count'])) or usr_choice == "B" and \
-            int(option_b[
-                    'follower_count']) > int(option_a['follower_count']):
+        print(f"Compare A: {account_format(option_a)}")
+        print(art.vs)
+        print(f"Against B: {account_format(option_b)}")
 
-        # Saving the account for next comparison
-        if usr_choice == "A":
-            temp = option_a
-        else:
+        usr_choice = input("Who has more followers? Type 'A' or 'B ").upper()
+        a_follower_count = option_a["follower_count"]
+        b_follower_count = option_b["follower_count"]
+
+        if correct_guess(usr_choice, a_follower_count, b_follower_count):
+
+            # Saving the account for next comparison
             temp = option_b
+            score += 1
+            guessed_correctly = True
+            clear(1)
+        else:
+            game_continue = False
 
-        score += 1
-        guessed_correctly = True
-        clear(1)
-    else:
-        game_continue = False
+    clear(1)
+    print(f"Sorry that is not the correct answer :(. Your total score is {score}")
 
-clear(1)
-print(f"Sorry that is not the correct answer :(. Your total score is {score}")
+
+game()
