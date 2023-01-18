@@ -34,31 +34,52 @@ def clear(seconds=0):
 option_a = select()
 option_b = select()
 
-print(option_a)
-print(option_b)
-
 # Setting up global variables
 game_continue = True
 guessed_correctly = False
 score = 0
-temp = ""
+temp = {}
+
 while game_continue:
     print(art.logo)
+
+    # If user picked correct option
     while guessed_correctly:
         print(f"You're right! Current score: {score}")
+
+        # Assign the correct guess to option A, and generate a new option B
+        option_a = temp
+        option_b = select()
+
+        if option_b['name'] == option_a['name']:
+            option_b = select()
+
         guessed_correctly = False
+
+    print(option_a)
+    print(option_b)
 
     print(f"Compare A: {option_a['name']}, a {option_a['description']}, from {option_a['country']}.")
     print(art.vs)
     print(f"Against B: {option_b['name']}, a {option_b['description']}, from {option_b['country']}.")
     usr_choice = input("Who has more followers? Type 'A' or 'B ").upper()
 
-    if (usr_choice == "A" and option_a['follower_count'] > option_b['follower_count']) or usr_choice == "B" and \
-            option_b[
-                'follower_count'] > option_a['follower_count']:
+    if (usr_choice == "A" and int(option_a['follower_count']) > int(
+            option_b['follower_count'])) or usr_choice == "B" and \
+            int(option_b[
+                    'follower_count']) > int(option_a['follower_count']):
+
+        # Saving the account for next comparison
+        if usr_choice == "A":
+            temp = option_a
+        else:
+            temp = option_b
+
         score += 1
         guessed_correctly = True
+        clear(1)
     else:
-        guessed_correctly = False
+        game_continue = False
 
-    clear(1)
+clear(1)
+print(f"Sorry that is not the correct answer :(. Your total score is {score}")
