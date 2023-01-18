@@ -85,8 +85,8 @@ def game():
             guessed_correctly = False
 
         # TESTING CODE
-        print(option_a)
-        print(option_b)
+        # print(option_a)
+        # print(option_b)
 
         print(f"Compare A: {account_format(option_a)}")
         print(art.vs)
