@@ -86,7 +86,7 @@ def game():
 
         # TESTING CODE
         # print(option_a)
-        # print(option_b)
+        # print(option_b)b0A
 
         print(f"Compare A: {account_format(option_a)}")
         print(art.vs)
