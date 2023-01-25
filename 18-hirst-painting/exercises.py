@@ -1,9 +1,8 @@
 # Understanding the Turtle Graphics library and reading documentation
-
-from turtle import Turtle, Screen
+import random
+import turtle as t
 from random import choice
 
-colors = ['SkyBlue', 'Aquamarine', 'indigo', 'DeepPink', 'Tomato', 'DarkOrchid', 'LightSeaGreen', 'SlateGray']
 direction = [0, 90, 180, 270]
 
 
@@ -36,7 +35,7 @@ def draw_shapes(turtle):
             turtle.fd(100)
             turtle.right(360 / n)
         n += 1
-        turtle.color(choice(colors))
+        turtle.color(random_color())
 
 
 def random_walk(turtle, strokes):
@@ -45,15 +44,37 @@ def random_walk(turtle, strokes):
     turtle.speed('fast')
     for _ in range(strokes):
         turtle.fd(20)
-        turtle.color(choice(colors))
+        turtle.color(random_color())
         turtle.setheading(choice(direction))
 
 
-tim = Turtle()
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_col = (r, g, b)
+    return random_col
+
+
+def spirograph(turtle):
+    turn_degree = 5
+    turns = int(360 / turn_degree)
+    turtle.speed('fastest')
+    for _ in range(turns):
+        turtle.color(random_color())
+        turtle.setheading(turn_degree)
+        turtle.circle(100)
+        turn_degree += 5
+
+
+tim = t.Turtle()
+
+# Changing color mode so we can change to random colours
+t.colormode(255)
 tim.shape('turtle')
 tim.color('blueviolet')
 
 random_walk(tim, 200)
 
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
