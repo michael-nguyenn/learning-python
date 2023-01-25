@@ -4,6 +4,7 @@ from turtle import Turtle, Screen
 from random import choice
 
 colors = ['SkyBlue', 'Aquamarine', 'indigo', 'DeepPink', 'Tomato', 'DarkOrchid', 'LightSeaGreen', 'SlateGray']
+direction = [0, 90, 180, 270]
 
 
 # Challenge #1 - Draw a square
@@ -38,11 +39,21 @@ def draw_shapes(turtle):
         turtle.color(choice(colors))
 
 
+def random_walk(turtle, strokes):
+    turtle.shape('arrow')
+    turtle.pensize(8)
+    turtle.speed('fast')
+    for _ in range(strokes):
+        turtle.fd(20)
+        turtle.color(choice(colors))
+        turtle.setheading(choice(direction))
+
+
 tim = Turtle()
 tim.shape('turtle')
 tim.color('blueviolet')
 
-draw_shapes(tim)
+random_walk(tim, 200)
 
 screen = Screen()
 screen.exitonclick()
