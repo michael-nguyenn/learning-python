@@ -1,102 +1,103 @@
 question_data = [
+
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "Linus Torvalds created Linux and Git.",
+        "question": "A slug&rsquo;s blood is green.",
         "correct_answer": "True",
         "incorrect_answers": [
             "False"
         ]
     },
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "The logo for Snapchat is a Bell.",
+        "question": "Kangaroos keep food in their pouches next to their children.",
         "correct_answer": "False",
         "incorrect_answers": [
             "True"
         ]
     },
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "Pointers were not used in the original C programming language; they were added later on in C++.",
+        "question": "Rabbits are rodents.",
         "correct_answer": "False",
         "incorrect_answers": [
             "True"
         ]
     },
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "RAM stands for Random Access Memory.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-            "False"
-        ]
-    },
-    {
-        "category": "Science: Computers",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "Ada Lovelace is often considered the first computer programmer.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-            "False"
-        ]
-    },
-    {
-        "category": "Science: Computers",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "&quot;HTML&quot; stands for Hypertext Markup Language.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-            "False"
-        ]
-    },
-    {
-        "category": "Science: Computers",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "In most programming languages, the operator ++ is equivalent to the statement &quot;+= 1&quot;.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-            "False"
-        ]
-    },
-    {
-        "category": "Science: Computers",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "Time on Computers is measured via the EPOX System.",
+        "question": "A flock of crows is known as a homicide.",
         "correct_answer": "False",
         "incorrect_answers": [
             "True"
         ]
     },
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "The Windows ME operating system was released in the year 2000.",
+        "question": "A caterpillar has more muscles than humans do.",
         "correct_answer": "True",
         "incorrect_answers": [
             "False"
         ]
     },
     {
-        "category": "Science: Computers",
+        "category": "Animals",
         "type": "boolean",
         "difficulty": "easy",
-        "question": "The Python programming language gets its name from the British comedy group &quot;Monty Python.&quot;",
+        "question": "Cats have whiskers under their legs.",
         "correct_answer": "True",
         "incorrect_answers": [
             "False"
-        ],
+        ]
+    },
+    {
+        "category": "Animals",
+        "type": "boolean",
+        "difficulty": "easy",
+        "question": "The Killer Whale is considered a type of dolphin.",
+        "correct_answer": "True",
+        "incorrect_answers": [
+            "False"
+        ]
+    },
+    {
+        "category": "Animals",
+        "type": "boolean",
+        "difficulty": "easy",
+        "question": "Rabbits can see what&#039;s behind themselves without turning their heads.",
+        "correct_answer": "True",
+        "incorrect_answers": [
+            "False"
+        ]
+    },
+    {
+        "category": "Animals",
+        "type": "boolean",
+        "difficulty": "easy",
+        "question": "Rabbits are carnivores.",
+        "correct_answer": "False",
+        "incorrect_answers": [
+            "True"
+        ]
+    },
+    {
+        "category": "Animals",
+        "type": "boolean",
+        "difficulty": "easy",
+        "question": "The internet browser Firefox is named after the Red Panda.",
+        "correct_answer": "True",
+        "incorrect_answers": [
+            "False"
+        ]
     }
 ]
