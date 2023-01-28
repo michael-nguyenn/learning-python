@@ -5,32 +5,37 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
 
 class Snake:
     def __init__(self):
-        self.snake = []
+        self.segments = []
         self.snake_factory()
-        self.head = self.snake[0]
+        self.head = self.segments[0]
 
     def snake_factory(self):
-        y = 0
-        x = 0
-        for i in range(3):
-            self.snake.append(Turtle('square'))
-            self.snake[i].color('white')
-            self.snake[i].penup()
-            self.snake[i].goto(x, y)
-            x -= 20
+        for position in STARTING_POSITIONS:
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        new_segment = Turtle('square')
+        new_segment.color('white')
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         # We iterate downwards from bottom of snake
-        for seg_num in range(len(self.snake) - 1, 0, -1):
+        for seg_num in range(len(self.segments) - 1, 0, -1):
             # We assign x,y co-ords to the previous
             # For example segment three, will become segment two, in terms of co-ords
-            new_y = self.snake[seg_num - 1].ycor()
-            new_x = self.snake[seg_num - 1].xcor()
-            self.snake[seg_num].goto(new_x, new_y)
+            new_y = self.segments[seg_num - 1].ycor()
+            new_x = self.segments[seg_num - 1].xcor()
+            self.segments[seg_num].goto(new_x, new_y)
 
         self.head.fd(MOVE_DISTANCE)
 
