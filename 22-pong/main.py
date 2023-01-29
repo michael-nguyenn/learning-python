@@ -21,11 +21,14 @@ screen.title("Pong")
 screen.colormode(255)
 screen.tracer(0)
 
-player = Paddle(350)
+l_paddle = Paddle(x=-350)
+r_paddle = Paddle(x=350)
 
 screen.listen()
-screen.onkey(player.go_up, "Up")
-screen.onkey(player.go_down, "Down")
+screen.onkey(l_paddle.go_up, "w")
+screen.onkey(l_paddle.go_down, "s")
+screen.onkey(r_paddle.go_up, "Up")
+screen.onkey(r_paddle.go_down, "Down")
 
 game_is_on = True
 
