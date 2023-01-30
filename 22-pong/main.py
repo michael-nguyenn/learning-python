@@ -11,10 +11,11 @@
 #   If it touches either paddles, it will bounce off at that angle
 #   Once the score gets incremented, we then create a new block
 
-import time
+
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import ScoreBoard
 
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -26,6 +27,7 @@ screen.tracer(0)
 l_paddle = Paddle(x_position=-350)
 r_paddle = Paddle(x_position=350)
 ball = Ball()
+scoreboard = ScoreBoard()
 
 screen.listen()
 screen.onkey(l_paddle.go_up, "w")
@@ -36,26 +38,26 @@ screen.onkey(r_paddle.go_down, "Down")
 game_is_on = True
 
 while game_is_on:
-    scored = False
+    screen.update()
+    ball.move()
 
-    while not scored:
-        screen.update()
-        ball.move()
+    # Detecting Collision
+    if ball.ycor() > 285 or ball.ycor() < -285:
+        # Needs to bounce
+        ball.bounce_y()
 
-        # Detecting Collision
-        if ball.ycor() > 285 or ball.ycor() < -285:
-            # Needs to bounce
-            ball.bounce_y()
+    # Detect collision with paddle
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
+        ball.bounce_x()
 
-        # Detect collision with paddle
-        if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
-            ball.bounce_x()
+    # Detecting R paddle miss
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
 
-        # Detecting goal
-        if ball.xcor() > 380:
-            ball.reset_position()
-
-        if ball.xcor() < -380:
-            ball.reset_position()
+    # Detecting L paddle miss
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
 
 screen.exitonclick()
