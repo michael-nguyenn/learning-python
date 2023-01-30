@@ -36,13 +36,26 @@ screen.onkey(r_paddle.go_down, "Down")
 game_is_on = True
 
 while game_is_on:
-    # time.sleep(0.1)
-    screen.update()
-    ball.move()
+    scored = False
 
-    # Detecting Collision
-    if ball.ycor() > 285 or ball.ycor() < -285:
-        # Needs to bounce
-        ball.bounce()
+    while not scored:
+        screen.update()
+        ball.move()
+
+        # Detecting Collision
+        if ball.ycor() > 285 or ball.ycor() < -285:
+            # Needs to bounce
+            ball.bounce_y()
+
+        # Detect collision with paddle
+        if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
+            ball.bounce_x()
+
+        # Detecting goal
+        if ball.xcor() > 380:
+            ball.reset_position()
+
+        if ball.xcor() < -380:
+            ball.reset_position()
 
 screen.exitonclick()
