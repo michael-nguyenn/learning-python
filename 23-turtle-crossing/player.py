@@ -12,12 +12,16 @@ class Player(Turtle):
         self.shape('turtle')
         self.penup()
         self.setheading(90)
-        self.goto(STARTING_POSITION)
+        self.go_to_start()
 
     def move(self):
         self.fd(MOVE_DISTANCE)
 
     def has_crossed(self):
-        if self.ycor() == FINISH_LINE_Y:
-            sleep(0.1)
-            self.goto(STARTING_POSITION)
+        if self.ycor() >= FINISH_LINE_Y:
+            return True
+        else:
+            return False
+
+    def go_to_start(self):
+        self.goto(STARTING_POSITION)

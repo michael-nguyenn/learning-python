@@ -13,6 +13,8 @@ player = Player()
 # This initializes the car manager class
 car_manager = CarManager()
 
+scoreboard = Scoreboard()
+
 screen.listen()
 screen.onkey(player.move, "Up")
 
@@ -24,6 +26,17 @@ while game_is_on:
     # Since our while loop runs at a 0.1s delay, it will generate a new car and call the move function
     car_manager.create_car()
     car_manager.move_cars()
-    
+
     # Detecting successful crossing
-    player.has_crossed()
+    if player.has_crossed():
+        scoreboard.increase_score()
+        player.go_to_start()
+        time.sleep(0.5)
+
+    # Detecting collision with a car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 25:
+            scoreboard.game_over()
+            game_is_on = False
+
+screen.exitonclick()
