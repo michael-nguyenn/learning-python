@@ -20,7 +20,7 @@ with open("my_file.txt") as file:
     contents = file.read()
     print(contents)
 
-# Writing to a file
+# Writing a text file called my_file.txt
 
 with open("my_file.txt", mode="a") as file:
     file.write("\nNew text.")  # with mode = "w" this rewrites the entire document
