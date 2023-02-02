@@ -1,0 +1,5 @@
+# What is the readlines() method
+
+# In the pandas library there are two main data types
+    # Dataframes - the whole table
+    # Series - similar to the list
