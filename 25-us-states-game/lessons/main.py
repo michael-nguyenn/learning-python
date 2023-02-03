@@ -21,8 +21,12 @@ data = pandas.read_csv("weather_data.csv")
 temp_series = data.temp
 max_temp = temp_series.max()
 
+data_dict = data.to_dict()
+
 # Getting Data in Rows
 # print(data[data.temp == max_temp])
+
+print(data['day'])
 
 monday = data[data.day == "Monday"]
 
