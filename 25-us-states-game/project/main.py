@@ -34,12 +34,7 @@ while correct_guesses < 50:
 
     if answer_state == "Exit":
         # Save and write missing states to a new CSV file
-        states_list = data.state.tolist()
-
-        for state in correct_states:
-
-            if state in states_list:
-                states_list.remove(state)
+        states_list = [state for state in data.state.tolist() if state not in correct_states]
 
         missing_states = {
             "State": states_list
@@ -66,5 +61,3 @@ while correct_guesses < 50:
         correct_states.append(answer_state)
         # Update the score
         correct_guesses = len(correct_states)
-
-
