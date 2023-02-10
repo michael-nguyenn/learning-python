@@ -29,6 +29,7 @@ def calculate(n, **kwargs):
 calculate(2, add=3, multiply=5)
 
 
+# Create a car class that will take optional keyword arguments
 class Car:
     def __init__(self, **kw):
         # Notice how we use the .get method. This will leave the attribute optional
