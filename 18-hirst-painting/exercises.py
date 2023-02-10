@@ -74,7 +74,6 @@ t.colormode(255)
 tim.shape('turtle')
 tim.color('blueviolet')
 
-random_walk(tim, 200)
-
+spirograph(tim)
 screen = t.Screen()
 screen.exitonclick()

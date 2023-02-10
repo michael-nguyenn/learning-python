@@ -7,7 +7,7 @@ import time
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
-screen.title("Snaaaaaaaaake")
+screen.title("Snack")
 screen.colormode(255)
 
 # Turns off screen to generate snake
